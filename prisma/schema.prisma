@@ -20,7 +20,19 @@ model users {
 }
 
 model products {
-  id        Int    @id @default(autoincrement())
-  name      String
-  isAvaible String
+  id          Int       @id @default(autoincrement())
+  name        String
+  description String
+  price       String
+  rating      Float
+  image       String
+  reviews     reviews[]
+}
+
+model reviews {
+  id         Int       @id @default(autoincrement())
+  text       String
+  mark       Int
+  products   products? @relation(fields: [productsId], references: [id])
+  productsId Int?
 }
