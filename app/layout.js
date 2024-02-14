@@ -23,7 +23,7 @@ export default async function RootLayout({ children }) {
     <html lang="ru">
 
       <body className={montserrat.className}>
-        <Header />
+        <Header session={session?.user} />
         <div>
 
           {
