@@ -13,18 +13,16 @@ export default function CreateProduct() {
     async function handleSubmit(e) {
         e.preventDefault()
         const formData = new FormData(e.target)
+        const data = Object.fromEntries(formData)
+        data['image[]'] = formData.getAll('image[]')
 
-        // for (let i = 0; i < files.length; i++) {
-        //     formData.append('image', files[i])
-        //     console.log(files[i]);
-        // }
 
-        // console.log(Object.fromEntries(formData));
-
-        const resp = await fetch('/api/products/create', {
-            method: 'PUT',
-            body: formData
-        })
+        console.log(...formData);
+        console.log();
+        // const resp = await fetch('/api/products/create', {
+        //     method: 'PUT',
+        //     body: formData
+        // })
     }
 
 
@@ -39,8 +37,7 @@ export default function CreateProduct() {
             <Input name="rating" type="text" placeholder="Введите начальный рейтинг товара" />
             <Input onChange={(e) => {
                 // setFiles(e.target.files)
-                // console.log(e.target.files);
-            }} name="image" type="file" />
+            }} multiple name="image[]" type="file" />
             <Button>Создать товар</Button>
         </form>
     )
