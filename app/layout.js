@@ -18,7 +18,6 @@ export const metadata = {
 
 export default async function RootLayout({ children }) {
   const session = await getServerSession(NextAuthConfig)
-  console.log('Текущая сессия', session);
   return (
     <html lang="ru">
 
